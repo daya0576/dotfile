@@ -1,0 +1,14 @@
+" Basic Settings ---------------------- {{{
+" Plugin
+set surround
+
+set ignorecase smartcase
+set incsearch
+set matchpairs=10
+" <c-d>
+" set scroll=5
+set scrolloff=3
+set showmode
+" }}}
+
+source ~/.vimrc
