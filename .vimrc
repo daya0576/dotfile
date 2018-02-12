@@ -4,8 +4,8 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-" 编辑ideavimrc
-nnoremap <leader>ev :vs ~/.ideavimrc<enter>
+" 编辑vimrc
+nnoremap <leader>ev :vs ~/.vimrc<enter>
 
 " }}}
 
@@ -17,10 +17,6 @@ nnoremap <S-Tab> <<_
 inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
-
-" 寻找方法和类
-nnoremap <C-f> /def <enter>
-nnoremap <C-c> /class <enter>
 
 " 调整缩进后自动选中，方便再次操作
 vnoremap < <gv
@@ -47,7 +43,7 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 
 " 在上下移动光标时，光标的上方或下方至少会保留显示的行数
-set scrolloff=5
+set scrolloff=2
 
 syntax enable
 
@@ -71,26 +67,23 @@ nnoremap <silent> g* g*zz
 " Go to home and end using capitalized directions
 noremap H ^
 noremap L $
-
-" y$ -> Y Make Y behave like other capitals
-map Y y$
-
-" copy to clipboard 
-vnoremap <leader>y "+y
-
-" select all
-map <Leader>sa ggVG"
+" Go to top/buttom of the screen, more comfortable with <c-d>/<c-e>/... 
+nnoremap <c-h> H
+nnoremap <c-l> L
 
 " jk --> <esc>
 inoremap jk <esc>l
 " map <esc> <nop>
 
-
-" 空格
+" enable space/enter in normal mode. 
 nnoremap <space> i<space><esc>
 nnoremap <cr> i<cr><esc>
 
-" }}}
+" Move cursor in insert mode
+inoremap LL <esc>la
+inoremap HH <esc>i
 
+nnoremap <c-d> 15j
+nnoremap <c-u> 15j
 
-
+" }}

@@ -12,3 +12,5 @@ set showmode
 " }}}
 
 source ~/.vimrc
+
+" Actions
