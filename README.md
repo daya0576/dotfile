@@ -1,5 +1,5 @@
-# My ideavim settings
+# vimrc overview
+![](http://p4186tjb7.bkt.clouddn.com/vim.jpg)
 
-
-# My vimrc settings
-
+# ideavim overview
+![](http://p4186tjb7.bkt.clouddn.com/ideavim.jpg)
