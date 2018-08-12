@@ -1,0 +1,36 @@
+Host *
+    ServerAliveInterval 15
+    ServerAliveCountMax 2
+
+Host jump 
+    HostName login1.em14.alipay.net
+    User changjian.zcj  
+
+Host sit.baymax
+    HostName baymax.inc.alipay.net
+    User admin
+ 
+Host prod.baymax
+    HostName ibaymax.alipay.net
+    User admin
+
+
+Host sit.takachiho
+    HostName sit1.takachiho.inc.alipay.net
+    User admin
+
+Host mysql.sit.takachiho
+    HostName mysql.takachiho.inc.alipay.net
+    User admin
+
+# ---------------
+
+Host hostker
+    HostName 118.184.56.159
+    User root
+
+Host hk_aliyun
+    HostName 47.75.146.178
+    User root
+
+ 
