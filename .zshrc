@@ -52,7 +52,12 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git, zsh-autosuggestions)
+plugins=(
+  zsh-syntax-highlighting
+  git 
+  zsh-autosuggestions
+  autojump
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,14 +90,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source ~/Dropbox/scripts/shell_config/bashrc
+source ~/.bashrc
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source /Users/henry/Dropbox/scripts/shell_config/hightlight/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /Users/henry/Dropbox/scripts/shell_config/hightlight/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
+
+#alias for cnpm
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+  --cache=$HOME/.npm/.cache/cnpm \
+  --disturl=https://npm.taobao.org/dist \
+  --userconfig=$HOME/.cnpmrc"

@@ -2,8 +2,9 @@
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
 # alias
-alias zblog='cd ~/zblog; rvm use 1.9.3@octopress'
+alias zblog='cd ~/zblog'
 alias nginx_home='cd /usr/local/etc/nginx/'
 alias nginx_log='cd /usr/local/var/log/nginx/'
 
@@ -19,6 +20,10 @@ alias z_ssh_server='sudo /etc/init.d/ssh start; ps -e|grep ssh'
 alias ip='wget http://ipecho.net/plain -O - -q ; echo'
 alias wifi_restart='sudo service network-manager restart'
 alias zkill="lsof -i:8000 | egrep -o '[0-9]+' | head -1 | xargs kill"
+
+# python repo 
+alias ibaymax="source ~/.venv/ibaymax/bin/activate; cd /Users/henry/repo/ibaymax_api/"
+alias takachiho="source ~/.venv/takachiho/bin/activate; cd /Users/henry/repo/takachiho"
 
 # ----------------------
 # Git Aliases
@@ -69,3 +74,5 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 # PURE_CMD_MAX_EXEC_TIME=10
 # PURE_PROMPT_SYMBOL="❯"
 # prompt pure
+
+export PATH="$PATH:Users/jetbrains/.local/bin"
