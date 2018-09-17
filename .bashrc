@@ -7,6 +7,7 @@ alias l='ls -CF'
 alias zblog='cd ~/zblog'
 alias nginx_home='cd /usr/local/etc/nginx/'
 alias nginx_log='cd /usr/local/var/log/nginx/'
+alias protoc='/usr/local/Cellar/protobuf/3.6.0/bin/protoc'
 
 # docker
 fpath=(~/.zsh/completion $fpath)
@@ -23,7 +24,7 @@ alias zkill="lsof -i:8000 | egrep -o '[0-9]+' | head -1 | xargs kill"
 
 # python repo 
 alias ibaymax="source ~/.venv/ibaymax/bin/activate; cd /Users/henry/repo/ibaymax_api/"
-alias takachiho="source ~/.venv/takachiho/bin/activate; cd /Users/henry/repo/takachiho"
+alias takachiho="source ~/.venv/takachiho3.7/bin/activate; cd /Users/henry/repo/takachiho"
 
 # ----------------------
 # Git Aliases
