@@ -77,3 +77,6 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 # prompt pure
 
 export PATH="$PATH:Users/jetbrains/.local/bin"
+
+# added by travis gem
+[ -f /Users/henry/.travis/travis.sh ] && source /Users/henry/.travis/travis.sh

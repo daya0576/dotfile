@@ -29,3 +29,7 @@ do
 	echo "ln -s $MY_RC_PATH/${file} ~/${file}"
 	echo 
 done
+
+# install zsh plugins 
+cp -r z.lua/  $ZSH_CUSTOM/plugins/z.lua
+cp -r zsh-syntax-highlighting  $ZSH_CUSTOM/plugins/zsh-syntax-highlighting

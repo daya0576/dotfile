@@ -53,10 +53,10 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  zsh-syntax-highlighting
   git 
   zsh-autosuggestions
-  autojump
+  z.lua
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -107,3 +107,8 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
   --cache=$HOME/.npm/.cache/cnpm \
   --disturl=https://npm.taobao.org/dist \
   --userconfig=$HOME/.cnpmrc"
+
+# added by travis gem
+[ -f /Users/henry/.travis/travis.sh ] && source /Users/henry/.travis/travis.sh
+
+eval $(thefuck --alias)
