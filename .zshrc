@@ -112,3 +112,4 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 [ -f /Users/henry/.travis/travis.sh ] && source /Users/henry/.travis/travis.sh
 
 eval $(thefuck --alias)
+eval "$(pyenv init -)"
