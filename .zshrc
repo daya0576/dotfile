@@ -113,3 +113,9 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 
 eval $(thefuck --alias)
 eval "$(pyenv init -)"
+
+# added by pipsi (https://github.com/mitsuhiko/pipsi)
+export PATH="/Users/henry/.local/bin:$PATH"
+
+# added by pipsi (https://github.com/mitsuhiko/pipsi)
+export PATH="/Users/henry/.local/bin:$PATH"
