@@ -1,0 +1,9 @@
+
+session_name: takachiho
+windows:
+- window_name: takachiho
+  shell_command_before:
+    - takachiho                    # run as a first command in all panes
+  panes:
+    - echo first panel           # pane no. 1
+    - echo second panel         # pane no. 2
