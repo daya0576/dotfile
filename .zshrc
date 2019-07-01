@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 export PATH="$HOME/bin:/usr/local/bin$PATH"
 export PATH="$PATH:/usr/local/mysql/bin"
+export PATH="$PATH:/Users/henry/.local/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/henry/.oh-my-zsh
@@ -111,11 +112,21 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 # added by travis gem
 [ -f /Users/henry/.travis/travis.sh ] && source /Users/henry/.travis/travis.sh
 
-eval $(thefuck --alias)
 eval "$(pyenv init -)"
 
 # added by pipsi (https://github.com/mitsuhiko/pipsi)
 export PATH="/Users/henry/.local/bin:$PATH"
+
+# added by pipsi (https://github.com/mitsuhiko/pipsi)
+export PATH="/Users/henry/.local/bin:$PATH"
+
+
+# For compilers to find zlib you may need to set:
+export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
+export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+
+# For pkg-config to find zlib you may need to set:
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
 
 # added by pipsi (https://github.com/mitsuhiko/pipsi)
 export PATH="/Users/henry/.local/bin:$PATH"
