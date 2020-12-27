@@ -7,6 +7,7 @@ CONFIG_FILES=(
 .ideavimrc
 .zshrc
 .ssh/config
+pipx.list
 )
 MY_RC_PATH=$(pwd)
 echo "Current path: $MY_RC_PATH"

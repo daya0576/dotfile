@@ -4,7 +4,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # alias
-alias zblog='cd ~/zblog'
+alias zblog='cd ~/zblog || cd ~/repo/private/zblog'
 alias nginx_home='cd /usr/local/etc/nginx/'
 alias nginx_log='cd /usr/local/var/log/nginx/'
 alias protoc='/usr/local/Cellar/protobuf/3.6.0/bin/protoc'
