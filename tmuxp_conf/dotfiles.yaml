@@ -1,0 +1,8 @@
+session_name: dotfiles
+windows:
+- window_name: dotfiles
+  shell_command_before:
+    - cd /Users/henry/repo/private/linux_configs
+  panes:
+    - shell_command:           # pane no. 1
+    - echo second pane         # pane no. 2
