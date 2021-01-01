@@ -32,5 +32,6 @@ do
 done
 
 # install zsh plugins 
-cp -r z.lua/  $ZSH_CUSTOM/plugins/z.lua
-cp -r zsh-syntax-highlighting  $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+# cp -r z.lua/  $ZSH_CUSTOM/plugins/z.lua
+# cp -r zsh-syntax-highlighting  $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+# curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
