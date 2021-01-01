@@ -1,9 +1,0 @@
-session_name: zblog
-windows:
-- window_name: zblog
-  shell_command_before:
-    - cd ~/zblog || cd ~/repo/private/zblog                     # run as a first command in all panes
-  panes:
-    - shell_command:           # pane no. 1
-        -  export NODE_ENV=development && hexo s --debug
-    - echo second pane         # pane no. 2

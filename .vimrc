@@ -10,6 +10,7 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
+
 " 编辑vimrc
 nnoremap <leader>ev :vs ~/.vimrc<enter>
 
