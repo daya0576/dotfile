@@ -1,0 +1,23 @@
+session_name: hachecker
+windows:
+- window_name: iacquirefront
+  shell_command_before:
+    - ssh dev.iacquirefront
+  panes:
+    - echo first pane
+    - echo second pane         # pane no. 2
+
+- window_name: icheckroute
+  shell_command_before:
+    - ssh dev.icheckroute
+    - cd /home/admin
+  panes:
+    - echo first pane
+    - echo second pane         # pane no. 2
+
+- window_name: ichecker
+  shell_command_before:
+    - ssh dev.ichecker
+  panes:
+    - echo first pane
+    - echo second pane         # pane no. 2
