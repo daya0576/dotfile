@@ -1,10 +1,3 @@
-" ## Ussage
-" install vim-plug( https://github.com/junegunn/vim-plug )
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-" Run: PlugInstall
-
-
 " vimrc File Settings ---------------------- {{{
 " set autocommand for vimrc 
 augroup filetype_vim
@@ -24,6 +17,8 @@ autocmd BufWinEnter *.* silent loadview
 
 
 " Common Settings ----------------------------- {{{
+" colorscheme molokai
+
 syntax enable
 set number
 set softtabstop=0              " 关闭softtabstop 永远不要将空格和tab混合输入
@@ -42,7 +37,7 @@ map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
 
-" Keep search pattern at the center of the screen.
+"""""""""""""""""" searching """"""""""""""""""""
 set ignorecase
 set incsearch
 set smartcase
@@ -51,12 +46,14 @@ nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
-
+"""""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
 
 
 " Navigation ------------------------------- {{{
-" 1. moving cursors 
+
+" 1. moving cursors {{{
+" zj and zk can be used to jump from fold to fold.
 " ctrl f and ctrl b
 " ctrl u and ctrl d
 nnoremap <c-d> 15j
@@ -66,22 +63,28 @@ nnoremap <c-u> 15k
 noremap H ^
 noremap L $
 
-" Go to top/buttom of the screen, more comfortable switching to <c-d>/<c-e>/... 
+" Go to top/buttom of the screen
 " M: move to the middle of the screen
 nnoremap <c-h> H
 nnoremap <c-l> L
 
-" 2. Screen Positioning
+" :jumps remembers the locations you have recently visited
+" Ctrl-O to jump back to the previous (older) location
+" Ctrl-I next (newer) 
+
+" }}}
+
+" 2. Screen Positioning {{{
 " z + <return>: move the current line to the top of the screen
 " ctrl e and ctrl y
+" }}}
 
 " }}}
 
 
 " InsertMode Quick Edit --------------------{{{
-" jk --> <esc>
 inoremap jk <esc>l
-inoremap <esc> <nop>
+" inoremap <esc> <nop>
 
 " map <esc> <nop>
 augroup relative_numbser
@@ -98,6 +101,119 @@ imap <C-b> <Left>
 
 " enable space/enter in normal mode. 
 nnoremap <cr> i<cr><esc>
+
+" }}}
+
+
+" Plugins --------------------{{{
+" vim-plug ----------{{{
+" ## Ussage
+" install vim-plug( https://github.com/junegunn/vim-plug )
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" Run: PlugInstall
+
+call plug#begin('~/.vim/plugged')
+
+" file system
+Plug 'preservim/nerdtree'                     " file system explorer
+Plug 'ctrlpvim/ctrlp.vim'                     " 模糊查找
+
+" version control
+Plug 'airblade/vim-gitgutter'                 " git diff
+Plug 'ruanyl/vim-gh-line'                     " 在Bitbucket或github快速打开当前代码行
+Plug 'tpope/vim-fugitive'                     " git插件 （Blame)
+
+" theme
+Plug 'vim-airline/vim-airline'                " shows a git diff in the sign column
+Plug 'vim-airline/vim-airline-themes'
+Plug 'flazz/vim-colorschemes'
+
+" coding 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'scrooloose/nerdcommenter'               " Quick comment
+Plug 'terryma/vim-multiple-cursors'           " 多光标编辑
+Plug 'godlygeek/tabular'                      " 自动根据某个符号对其
+
+Plug 'stephpy/vim-yaml'
+Plug 'nvie/vim-flake8'
+Plug 'gabrielelana/vim-markdown'
+Plug 'mzlogin/vim-markdown-toc'
+Plug 'nathangrigg/vim-beancount'
+Plug 'aklt/plantuml-syntax'
+
+" debug(local)
+Plug 'tweekmonster/startuptime.vim'           " Vim start up time debug
+
+" TODO:
+Plug 'benmills/vimux'
+" On-demand lazy load
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+
+call plug#end()
+" }}}
+
+" NerdTree Settings --------------------{{{
+augroup nerdtree_settings
+    autocmd!
+    " NERDDTree快捷键
+    map <leader>t :NERDTreeToggle<CR>
+    map <C-n> :NERDTreeToggle<CR>
+    " 是否显示隐藏文件
+    let NERDTreeShowHidden=1
+    " 设置宽度
+    let NERDTreeWinSize=30
+    " 在终端启动vim时，共享NERDTree
+    let g:nerdtree_tabs_open_on_console_startup=1
+    " 忽略一下文件的显示
+    let NERDTreeIgnore=['\.pyc','\~$',
+                \ '\.swp',
+                \ '\.o',
+                \ '.DS_Store',
+                \ '\.orig$',
+                \ '@neomake_',
+                \ '.coverage.',
+                \ '__pycache__$[[dir]]',
+                \ '.pytest_cache$[[dir]]',
+                \ '.git$[[dir]]',
+                \ '.idea[[dir]]',
+                \ '.vscode[[dir]]',
+                \ 'htmlcov[[dir]]',
+                \ 'test-reports[[dir]]',
+                \ '.egg-info$[[dir]]']
+    " 显示书签列表
+    let NERDTreeShowBookmarks=1
+    " 改变nerdtree的箭头
+    " let g:NERDTreeDirArrowExpandable = '?'
+    " let g:NERDTreeDirArrowCollapsible = '?'
+    " vim不指定具体文件打开是，自动使用nerdtree
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree |endif
+
+    " 当vim打开一个目录时，nerdtree自动使用
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+    " 打开新的窗口，focus在buffer里而不是NerdTree里
+    autocmd VimEnter * :wincmd l
+
+    " 当vim中没有其他文件，值剩下nerdtree的时候，自动关闭窗口
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
+
+" }}}
+
+" }}}
+
+
+" Language  --------------------{{{
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
 " }}}
 
