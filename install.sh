@@ -3,6 +3,7 @@
 CONFIG_FILES=(
   .bashrc
   .tmux.conf
+  .tmux-osx.conf
   .vimrc
   .ideavimrc
   .zshrc
@@ -12,6 +13,7 @@ CONFIG_FILES=(
 MY_RC_PATH=$(pwd)
 echo "Current path: $MY_RC_PATH"
 echo
+
 
 for file in ${CONFIG_FILES[@]}
 do

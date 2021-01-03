@@ -15,11 +15,9 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview 
 " }}} 
 
-
 " Common Settings ----------------------------- {{{
-" colorscheme molokai
-
 syntax enable
+
 set number
 set softtabstop=0              " 关闭softtabstop 永远不要将空格和tab混合输入
 set colorcolumn=80  " max line 80
@@ -27,6 +25,7 @@ set cursorline " 高亮光标所在行
 set linebreak " wrap long lines to fit in the window
 set synmaxcol=500 " Syntax coloring lines that are too long just slows down the world
 set scrolloff=3
+let mapleader=','
 
 " Mac OS X clipboard sharing
 set clipboard=unnamed
@@ -48,7 +47,6 @@ nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 """""""""""""""""""""""""""""""""""""""""""""""""
 " }}}
-
 
 " Navigation ------------------------------- {{{
 
@@ -81,7 +79,6 @@ nnoremap <c-l> L
 
 " }}}
 
-
 " InsertMode Quick Edit --------------------{{{
 inoremap jk <esc>l
 " inoremap <esc> <nop>
@@ -104,6 +101,17 @@ nnoremap <cr> i<cr><esc>
 
 " }}}
 
+" Language  --------------------{{{
+" GoTo code navigation.
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+
+" Symbol renaming.
+" nmap <leader>rn <Plug>(coc-rename)
+
+" }}}
 
 " Plugins --------------------{{{
 " vim-plug ----------{{{
@@ -130,7 +138,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
 
 " coding 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'               " Quick comment
 Plug 'terryma/vim-multiple-cursors'           " 多光标编辑
 Plug 'godlygeek/tabular'                      " 自动根据某个符号对其
@@ -200,20 +208,22 @@ augroup nerdtree_settings
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 
-" }}}
+" NerdComment
+" vim 8 / neovim HEAD runtime: when ft==python, cms:=#\ %s
+" "   -- when g:NERDSpaceDelims==1, then NERDComment results in double space
+let g:NERDCustomDelimiters = {
+            \ 'python': { 'left': '#', 'right': '' },
+            \ 'vim': { 'left': '"', 'right': '' }
+            \ }
+
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+nnoremap <leader>cp :%s/\(print(.*)\)/# \1/g<CR>
+nnoremap <leader>cq :%s/# \(print(.*)\)/\1/g<CR>
+
+set background=dark
+" colorscheme molokai
 
 " }}}
 
-
-" Language  --------------------{{{
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
 " }}}
-
