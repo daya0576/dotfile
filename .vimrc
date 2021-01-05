@@ -96,6 +96,9 @@ imap <C-a> <HOME>
 imap <C-f> <Right>
 imap <C-b> <Left>
 
+" insert newline
+imap <C-o> <esc>o
+
 " enable space/enter in normal mode. 
 nnoremap <cr> i<cr><esc>
 
