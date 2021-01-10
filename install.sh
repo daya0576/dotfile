@@ -9,6 +9,7 @@ CONFIG_FILES=(
   .zshrc
   .ssh/config
   pipx.list
+  init.vim
 )
 MY_RC_PATH=$(pwd)
 echo "Current path: $MY_RC_PATH"

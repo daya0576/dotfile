@@ -1,9 +1,9 @@
 " vimrc File Settings ---------------------- {{{
 " set autocommand for vimrc 
 augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-    autocmd bufwritepost .vimrc source ~/.vimrc
+autocmd!
+autocmd FileType vim setlocal foldmethod=marker
+autocmd bufwritepost .vimrc source ~/.vimrc
 augroup END
 
 nnoremap _ zM
@@ -20,12 +20,12 @@ syntax enable
 
 set number
 set softtabstop=0              " 关闭softtabstop 永远不要将空格和tab混合输入
-set colorcolumn=80  " max line 80
+" set colorcolumn=80  " max line 80
 set cursorline " 高亮光标所在行
 set linebreak " wrap long lines to fit in the window
 set synmaxcol=500 " Syntax coloring lines that are too long just slows down the world
 set scrolloff=3
-let mapleader=','
+let mapleader=' '
 
 " Mac OS X clipboard sharing
 set clipboard=unnamed

@@ -40,11 +40,13 @@ map <leader>r <Action>(RenameElement)
 map <leader>c <Action>(Stop)
 map <leader>z <Action>(ToggleDistractionFreeMode)
 
-map <leader>s <Action>(SelectInProjectView)
+map <leader>s <Action>(SurroundWith)
 map <leader>a <Action>(Annotate)
 map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 map <S-Space> <Action>(GotoNextError)
 
 map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>o <Action>(FileStructurePopup)
+
+map <leader>m <Action>(ExtractMethod)
 " }}}
