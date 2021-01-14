@@ -8,24 +8,27 @@ augroup END
 
 nnoremap _ zM
 nnoremap + zR
-nnoremap <space> za
 
-" make folders open when open later
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview 
 " }}} 
 
 " Common Settings ----------------------------- {{{
 syntax enable
 
 set number
+set relativenumber
+augroup numbertoggle
+autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 set softtabstop=0              " 关闭softtabstop 永远不要将空格和tab混合输入
 set colorcolumn=80  " max line 80
 set cursorline " 高亮光标所在行
 set linebreak " wrap long lines to fit in the window
 set synmaxcol=500 " Syntax coloring lines that are too long just slows down the world
-set scrolloff=3
-let mapleader=','
+set scrolloff=2
+let mapleader=' '
 
 " Mac OS X clipboard sharing
 set clipboard=unnamed
@@ -70,6 +73,9 @@ nnoremap <c-l> L
 " Ctrl-O to jump back to the previous (older) location
 " Ctrl-I next (newer) 
 
+" Insert newline without entering insert mode
+nmap <S-Enter> O<Esc>j
+nmap <CR> o<Esc>k
 " }}}
 
 " 2. Screen Positioning {{{
@@ -83,13 +89,6 @@ nnoremap <c-l> L
 inoremap jk <esc>l
 " inoremap <esc> <nop>
 
-" map <esc> <nop>
-augroup relative_numbser
-autocmd!
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
-augroup END
-
 " Moving cursor in insert mode
 imap <C-e> <END>
 imap <C-a> <HOME>
@@ -99,7 +98,7 @@ imap <C-b> <Left>
 " insert newline
 imap <C-o> <esc>o
 
-" enable space/enter in normal mode. 
+" enter in normal mode. 
 nnoremap <cr> i<cr><esc>
 
 " }}}
@@ -213,7 +212,8 @@ augroup END
 
 " NerdComment
 " vim 8 / neovim HEAD runtime: when ft==python, cms:=#\ %s
-" "   -- when g:NERDSpaceDelims==1, then NERDComment results in double space
+" "   -- when g:NERD
+" SpaceDelims==1, then NERDComment results in double space
 let g:NERDCustomDelimiters = {
             \ 'python': { 'left': '#', 'right': '' },
             \ 'vim': { 'left': '"', 'right': '' }
