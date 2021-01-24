@@ -2,7 +2,7 @@
 " set autocommand for vimrc
 augroup filetype_vim
 autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
+    autocmd FileType vim,tmux setlocal foldmethod=marker
     autocmd bufwritepost .vimrc source ~/.vimrc
 augroup END
 
@@ -21,10 +21,13 @@ set termguicolors
 " line numbers 
 set number
 set relativenumber
+set cursorline
 
-" auto save current session 
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+if !empty(expand(glob("filename")))
+  " auto save current session 
+  au BufWinLeave *rc mkview
+  au BufWinEnter * silent loadview
+endif
 
 set softtabstop=0              " 关闭softtabstop 永远不要将空格和tab混合输入
 set linebreak " wrap long lines to fit in the window
@@ -99,43 +102,6 @@ nnoremap <cr> i<cr><esc>
 " }}}
 
 " Plugins --------------------{{{
-" vim-plugs ----------{{{
-" ## Ussage
-" install vim-plug( https://github.com/junegunn/vim-plug )
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-" Run: PlugInstall
-call plug#begin('~/.vim/plugged')
-" file system
-Plug 'preservim/nerdtree'                     " file system explorer
-Plug 'jistr/vim-nerdtree-tabs'		      " 可以使 nerdtree 的 tab 更加友好些
-
-" version control
-Plug 'airblade/vim-gitgutter'                 " git diff
-Plug 'ruanyl/vim-gh-line'                     " 在Bitbucket或github快速打开当前代码行
-Plug 'vim-airline/vim-airline'                " shows a git diff in the sign column
-
-" coding
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'scrooloose/nerdcommenter'               " Quick comment
-Plug 'terryma/vim-multiple-cursors'           " 多光标编辑
-Plug 'majutsushi/tagbar'                      " 当前代码文件中的变量和函数列表的插件
-Plug 'jiangmiao/auto-pairs'                   " 自动补全括号的插件，包括小括号，中括号，以及花括号
-Plug 'tpope/vim-surround'
-
-" navigation
-Plug 'easymotion/vim-easymotion'
-
-" go 插件
-Plug 'fatih/vim-go', { 'tag': '*' }
-" 配色
-Plug 'flazz/vim-colorschemes'
-" Plug 'crusoexia/vim-monokai'
-Plug 'sainnhe/sonokai'
-Plug 'cormacrelf/vim-colors-github'
-
-call plug#end()
-" }}}
 " coc settings  --------------------{{{
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -189,6 +155,40 @@ nnoremap <leader>cp :%s/\(print(.*)\)/# \1/g<CR>
 nnoremap <leader>cq :%s/# \(print(.*)\)/\1/g<CR>
 
 " }}}
+" vim-plugs ----------{{{
+" ## Ussage
+" install vim-plug( https://github.com/junegunn/vim-plug )
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" Run: PlugInstall
+call plug#begin('~/.vim/plugged')
+" version control
+Plug 'airblade/vim-gitgutter'                 " git diff
+Plug 'ruanyl/vim-gh-line'                     " 在Bitbucket或github快速打开当前代码行
+" Plug 'vim-airline/vim-airline'                " shows a git diff in the sign column
+
+" coding
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'scrooloose/nerdcommenter'               " Quick comment
+Plug 'jiangmiao/auto-pairs'                   " 自动补全括号的插件，包括小括号，中括号，以及花括号
+Plug 'tpope/vim-surround'
+
+" navigation
+Plug 'mhinz/vim-startify'
+Plug 'easymotion/vim-easymotion'
+Plug 'preservim/nerdtree'                     " file system explorer
+Plug 'junegunn/fzf.vim'
+
+" go 插件
+Plug 'fatih/vim-go', { 'tag': '*' }
+" 配色
+Plug 'flazz/vim-colorschemes'
+" Plug 'crusoexia/vim-monokai'
+Plug 'sainnhe/sonokai'
+Plug 'cormacrelf/vim-colors-github'
+
+call plug#end()
+" }}}
 " colorschemes Settings --------------------{{{
 
 let g:solarized_termcolors=256
@@ -198,23 +198,13 @@ let g:github_colors_soft = 1
 " https://github.com/chriskempson/vim-tomorrow-theme 
 syntax enable
 set background=dark
-colorscheme tomorrow-night
-
+" colorscheme tomorrow-night
+colorscheme hybrid_reverse
+let g:airline_theme = "hybrid"
 " }}}
 
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-
-" s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
-
-" Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
-
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+" easymotion
+let g:EasyMotion_smartcase = 1
+nmap ss <Plug>(easymotion-s2)
 
 "}}}
