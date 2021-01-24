@@ -41,3 +41,6 @@ done
 #### install vim plug manager
 # curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 #     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+#### install vim colors
+mkdir -p ~/repo/private/daya_dotfiles && ln -s $MY_RC_PATH/vim/colors/Tomorrow-Night.vim ~/.vim/colors/Tomorrow-Night.vim

@@ -5,5 +5,5 @@ windows:
     - cd ~/zblog || cd ~/repo/private/zblog                     # run as a first command in all panes
   panes:
     - shell_command:           # pane no. 1
-        -  export NODE_ENV=development && hexo s --debug
+        -  export NODE_ENV=development && hexo s --debug --draft
     - echo second pane         # pane no. 2

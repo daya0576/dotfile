@@ -9,6 +9,7 @@ alias nginx_home='cd /usr/local/etc/nginx/'
 alias nginx_log='cd /usr/local/var/log/nginx/'
 alias protoc='/usr/local/Cellar/protobuf/3.6.0/bin/protoc'
 alias gg='cat  ~/.oh-my-zsh/plugins/git/git.plugin.zsh'
+alias vim='/usr/bin/vim'
 
 # docker
 fpath=(~/.zsh/completion $fpath)
@@ -19,7 +20,7 @@ alias ip='wget http://ipecho.net/plain -O - -q ; echo'
 alias wifi_restart='sudo service network-manager restart'
 alias zkill="lsof -i:8000 | egrep -o '[0-9]+' | head -1 | xargs kill"
 
-# python repo 
+# python repo
 alias ibaymax="source ~/.venv/ibaymax/bin/activate; cd /Users/henry/repo/ibaymax_api/"
 alias takachiho="source ~/.venv/takachiho3.7/bin/activate; cd /Users/henry/repo/takachiho"
 
@@ -55,3 +56,5 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 # prompt pure
 
 export PATH="$PATH:Users/jetbrains/.local/bin"
+
+export TERM=xterm-256color
