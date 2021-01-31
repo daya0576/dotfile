@@ -23,11 +23,11 @@ set number
 set relativenumber
 set cursorline
 
-if !empty(expand(glob("filename")))
-  " auto save current session 
-  au BufWinLeave *rc mkview
-  au BufWinEnter * silent loadview
-endif
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
 
 set softtabstop=0              " 关闭softtabstop 永远不要将空格和tab混合输入
 set linebreak " wrap long lines to fit in the window
@@ -52,6 +52,15 @@ set smartcase
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
 
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+cnoremap <C-h> <Left>
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
+cnoremap <C-l> <Right>
+
 " disable automatic comment insertion
 set formatoptions-=cro
 
@@ -62,6 +71,17 @@ nnoremap <Leader>O O<Esc>^Da
 " }}}
 
 " Navigation ------------------------------- {{{
+
+" fzf
+" 搜索当前单词，依赖 https://github.com/ggreer/the_silver_searcher
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+" 搜索文件
+nnoremap <silent> <c-p> :Files <CR>
+
+" easymotion
+let g:EasyMotion_smartcase = 1
+nmap ss <Plug>(easymotion-s2)
+
 " 1. moving cursors {{{
 " zj and zk can be used to jump from fold to fold.
 nnoremap <c-d> 15j
@@ -237,6 +257,7 @@ Plug 'ruanyl/vim-gh-line'                     " 在Bitbucket或github快速打�
 
 " coding
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" CocInstall coc-pyright
 Plug 'scrooloose/nerdcommenter'               " Quick comment
 Plug 'jiangmiao/auto-pairs'                   " 自动补全括号的插件，包括小括号，中括号，以及花括号
 Plug 'tpope/vim-surround'
@@ -247,6 +268,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'preservim/nerdtree'                     " file system explorer
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'mileszs/ack.vim'
 
 " go 插件
 Plug 'fatih/vim-go', { 'tag': '*' }
@@ -272,9 +295,6 @@ colorscheme hybrid_reverse
 let g:airline_theme = "hybrid"
 " }}}
 
-" easymotion
-let g:EasyMotion_smartcase = 1
-nmap ss <Plug>(easymotion-s2)
 
 "}}}
 

@@ -16,24 +16,35 @@ set ideastatusicon=gray
 set idearefactormode=keep
 " }}}
 
-
 """ Plugins  --------------------------------{{{
+" https://github.com/JetBrains/ideavim/wiki/Emulated-plugins
+" 快速移动至「关键词」位置
+set easymotion
+" S
 set surround
 set multiple-cursors
+" gcc
 set commentary
+" 处理 arguments, Additional text objects: aa, ia
 set argtextobj
-set easymotion
+set exchange
+" cie equals to ggVGc
 set textobj-entire
 set ReplaceWithRegister
+" 高亮复制的内容
+set highlightedyank
 
 """ Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>"
 map <leader>f <Plug>(easymotion-s)
+
+map <C-N>  <A-N>
+map <C-P>  <A-P>
+map <C-X>  <A-X>
+
 " }}}
 
-
 """ Mappings -------------------------------- {{{
-map <leader>r <Action>(RenameElement)
 map <c-j> gT
 map <c-k> gt
 
@@ -51,4 +62,5 @@ map <leader>o <Action>(FileStructurePopup)
 map <leader>m <Action>(ExtractMethod)
 
 vnoremap <leader>u <Action>(EditorSelectWord)
+map <leader>r <Action>(RenameElement)
 " }}}

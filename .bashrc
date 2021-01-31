@@ -2,6 +2,7 @@
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+# alias fzf=/usr/local/Cellar/fzf/0.25.0/bin/fzf
 
 # alias
 alias zblog='cd ~/zblog || cd ~/repo/private/zblog'
@@ -19,10 +20,6 @@ autoload -Uz compinit && compinit -i
 alias ip='wget http://ipecho.net/plain -O - -q ; echo'
 alias wifi_restart='sudo service network-manager restart'
 alias zkill="lsof -i:8000 | egrep -o '[0-9]+' | head -1 | xargs kill"
-
-# python repo
-alias ibaymax="source ~/.venv/ibaymax/bin/activate; cd /Users/henry/repo/ibaymax_api/"
-alias takachiho="source ~/.venv/takachiho3.7/bin/activate; cd /Users/henry/repo/takachiho"
 
 # PATH
 export PATH="$PATH:/usr/local/share/python:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -58,3 +55,4 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 export PATH="$PATH:Users/jetbrains/.local/bin"
 
 export TERM=xterm-256color
+
